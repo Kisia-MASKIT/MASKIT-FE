@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-//import SignUp from '../views/userView/signUp.vue';  // 수정된 경로
+import Login from '../views/userView/login.vue';
+import SignUp from '../views/userView/signUp.vue';
 import mainPage from '@/views/userView/Pages/mainPage.vue';
 
 const routes = [
@@ -7,6 +8,16 @@ const routes = [
     path: '/',
     name: 'mainPage',
     component: mainPage
+  },
+  {
+    path: '/login',
+    name: 'userLogin',
+    component: Login
+  },
+  {
+    path: '/signUp',
+    name: 'signUp',
+    component: SignUp
   }
 ];
 
