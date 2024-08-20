@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import SignUp from '../views/userView/signUp.vue';  // 수정된 경로
+//import SignUp from '../views/userView/signUp.vue';  // 수정된 경로
+import mainPage from '@/views/userView/Pages/mainPage.vue';
 
 const routes = [
   {
     path: '/',
-    name: 'SignUp',
-    component: SignUp
+    name: 'mainPage',
+    component: mainPage
   }
 ];
 
