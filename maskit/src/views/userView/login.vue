@@ -25,17 +25,17 @@
           />
         </div>
         <div class="signup-link">
-        <button class="button-style" type="submit">로그인하기</button>
-      <router-link to="/signUp">회원가입</router-link>
-    </div>
+          <button class="button-style" type="submit">로그인하기</button>
+          <router-link to="/signUp">회원가입</router-link>
+        </div>
       </form>
     </div>
-    
   </div>
 </template>
 
-
 <script>
+import axios from 'axios';
+
 export default {
   name: 'UserLogin',
   data() {
@@ -48,12 +48,29 @@ export default {
   mounted() {
     setTimeout(() => {
       this.slideCompleted = true;
-    }, 1200); // 1.5초 후 애니메이션 완료
+    }, 1200); // 1.2초 후 애니메이션 완료
   },
   methods: {
-    login() {
-      // 로그인 버튼 클릭 시 처리할 내용
-      // 현재는 아무런 상태 변화가 없음
+    async login() {
+      try {
+        const response = await axios.post(`${process.env.VUE_APP_API_BASE_URL}/api/login`, {
+        email: this.email,
+       password: this.password
+      });
+        
+        // 로그인 성공 시 응답에서 accessToken 추출
+        const { accessToken } = response.data;
+
+        // 토큰을 localStorage에 저장
+        localStorage.setItem('accessToken', accessToken);
+
+        // 로그인 성공 후 다른 페이지로 이동하거나 상태 업데이트
+        this.$router.push('/dashboard'); // 예를 들어 대시보드 페이지로 이동
+
+      } catch (error) {
+        console.error('로그인 오류:', error);
+        alert('로그인에 실패했습니다.');
+      }
     }
   }
 }

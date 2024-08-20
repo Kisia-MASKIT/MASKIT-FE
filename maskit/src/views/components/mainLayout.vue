@@ -1,12 +1,15 @@
 <template>
     <div class="mainLayout">
        <PageHeader />
+       <div class = "stepContainer">
+        <progressBar :currentStep="currentStep" :steps="steps" />
+       </div>
     <div class="main-content">
       <slot></slot> <!-- Slot for dynamic content -->
     </div>
     <div class="button-container" v-if="buttonRoute">
       <router-link :to="buttonRoute" class="full-width-link">
-        <button class="navigate-button">
+        <button class="navigate-button" @click="handleClick">
           {{ buttonText }}
         </button>
       </router-link>
@@ -16,11 +19,13 @@
 
 <script>
 import PageHeader from '@/views/components/PageHeader.vue';
+import progressBar from './progressBar.vue';
 
 export default {
   name: 'mainLayout',
   components: {
-    PageHeader
+    PageHeader,
+    progressBar,
   },
   props: {
     buttonRoute: {
@@ -30,6 +35,19 @@ export default {
     buttonText: {
       type: String,
       default: '다음단계로 이동하기'
+    },
+    steps: {
+      type: Array,
+      default: () => ['Step 1', 'Step 2', 'Step 3', 'Step 4']
+    },
+    currentStep: {
+      type: Number,
+      default: 1
+    }
+  },
+  methods: {
+    handleClick() {
+      this.$emit('next-step');
     }
   }
 }
@@ -41,6 +59,11 @@ export default {
   min-height: 100vh; /* Full viewport height */
   display: flex;
   flex-direction: column; /* Stack header and main content vertically */
+}
+
+.stepContainer{
+    margin-top: 80px;
+    z-index: 500;
 }
 
 .main-content {
@@ -79,6 +102,6 @@ export default {
 }
 
 .navigate-button:hover {
-  background-color: #c4d1d6; /* Darker shade on hover */
-}
+    background-color: #484848; 
+  }
 </style>
