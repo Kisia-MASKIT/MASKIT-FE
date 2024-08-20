@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'signUp',
   data() {
@@ -29,15 +31,24 @@ export default {
     };
   },
   methods: {
-    submitForm() {
-      // 회원가입 로직을 여기에 작성합니다.
-      // 예를 들어, 서버에 요청을 보내고 응답을 처리하는 코드가 필요할 수 있습니다.
+    async submitForm() {
+      try {
+        const response = await axios.post(`${process.env.VUE_APP_API_BASE_URL}/users/signUp`, {
+          email: this.email,
+          password: this.password
+        });
 
-      // 회원가입이 완료되면 팝업 메시지 표시
-      alert('가입완료되었습니다! ');
-
-      // 로그인 페이지로 이동
-      this.$router.push('/');
+        // Handle the response from the server
+        if (response.data.isSuccess) {
+          alert('가입 완료되었습니다!');
+          this.$router.push('/');
+        } else {
+          alert('가입 실패: ' + response.data.message);
+        }
+      } catch (error) {
+        console.error('Error during signup:', error);
+        alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요.');
+      }
     }
   }
 }
@@ -46,5 +57,3 @@ export default {
 <style scoped>
 @import '../../assets/styles/signUp.css';
 </style>
-
-

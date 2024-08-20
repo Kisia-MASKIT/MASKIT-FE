@@ -3,7 +3,6 @@ import Login from '../views/userView/login.vue';
 import SignUp from '../views/userView/signUp.vue';
 import mainPage from '@/views/userView/Pages/mainPage.vue';
 //import loadingPage from '@/views/userView/Pages/loadingPage.vue';
-//import testPage from '@/views/userView/Pages/testPage.vue';
 import detectionPage from '@/views/userView/Pages/detectionPage.vue';
 import editVideo from '@/views/userView/Pages/editVideo.vue';
 import maskingPage from '@/views/userView/Pages/maskingPage.vue';
@@ -28,34 +27,45 @@ const routes = [
   }
 ];
 */
+
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes : [
     {
-      path: '/',
+      path: '/main',
       name: 'mainPage',
       component: mainPage
     },
     {
-    path: '/detectionPage',
-    name: 'detectionPage',
-    component: detectionPage
+      path: '/',
+      name: 'userLogin',
+      component: Login
+    },
+    {
+      path: '/signUp',
+      name: 'signUp',
+      component: SignUp
+    },
+    {
+      path: '/detectionPage',
+      name: 'detectionPage',
+      component: detectionPage
     },
     {
       path: '/editVideo',
       name: 'editVideo',
       component: editVideo
-      },
-      {
-        path: '/maskingPage',
-        name: 'maskingPage',
-        component: maskingPage
-        },
-        {
-          path: '/videos',
-          name: 'checkVideos',
-          component: checkVideos
-          }
+    },
+    {
+      path: '/maskingPage',
+      name: 'maskingPage',
+      component: maskingPage
+    },
+    {
+      path: '/videos',
+      name: 'checkVideos',
+      component: checkVideos
+    }
   ]
 });
 
