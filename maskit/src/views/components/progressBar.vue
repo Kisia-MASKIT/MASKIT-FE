@@ -26,7 +26,7 @@ export default {
     },
     steps: {
       type: Array,
-      default: () => ['Step 1', 'Step 2', 'Step 3', 'Step 4'],
+      default: () => ['동영상 업로드', '이상행동 발생 지점 탐지', '영상 편집', '마스킹 처리'],
     },
   },
 };

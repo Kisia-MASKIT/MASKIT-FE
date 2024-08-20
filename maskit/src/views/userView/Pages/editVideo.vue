@@ -1,11 +1,9 @@
 <template>
-    <mainLayout :currentStep="1" buttonRoute="/detectionPage" buttonText="다음단계로 이동">
-      <div class="video-upload">
-        <h1>Upload Your Video</h1>
-        <div class="drop-zone" @drop.prevent="handleDrop" @dragover.prevent>
-          <p>Drag and drop your video file here</p>
-          <input type="file" accept="video/*" @change="handleFileChange" hidden ref="fileInput" />
-          <button @click="triggerFileInput">Select File</button>
+    <mainLayout :currentStep="3" buttonRoute="/maskingPage" buttonText="다음단계로 이동">
+      <div class="editing">
+        <h1>시간 기준 앞뒤 10초 영상 자르기</h1>
+        <div class="cut-video" >
+          
         </div>
       </div>
     </mainLayout>
@@ -15,7 +13,7 @@
   import mainLayout from '@/views/components/mainLayout.vue';
   
   export default {
-    name: 'mainPage',
+    name: 'detectionPage',
     components: {
         mainLayout
     },
@@ -44,22 +42,22 @@
   </script>
   
   <style scoped>
-  .video-upload {
+  .editing {
     text-align: center;
     height: 50%
   }
   
-  .drop-zone {
-    border: 2px dashed #22B2D2; 
-    border-radius: 8px;
+  .cut-video {
+    border: 2px dashed #22B2D2; /* Dashed border for the drop area */
+    border-radius: 8px; /* Rounded corners */
     padding: 20px;
-    background-color: #f8f9fa; 
+    background-color: #f8f9fa; /* Light background color */
     cursor: pointer;
   }
   
-  .drop-zone p {
+  .cut-video p {
     margin: 0;
-    color: #22B2D2; 
+    color: #22B2D2; /* Blue color for text */
   }
   
   </style>

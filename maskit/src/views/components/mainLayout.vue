@@ -63,7 +63,7 @@ export default {
 
 .stepContainer{
     margin-top: 80px;
-    z-index: 1000;
+    z-index: 500;
 }
 
 .main-content {
@@ -102,6 +102,6 @@ export default {
 }
 
 .navigate-button:hover {
-  background-color: #c4d1d6; /* Darker shade on hover */
-}
+    background-color: #484848; 
+  }
 </style>
