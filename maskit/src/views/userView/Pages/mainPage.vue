@@ -1,4 +1,3 @@
-<!-- src/pages/VideoUploadPage.vue -->
 <template>
     <mainLayout buttonRoute="/nextpage" buttonText="다음단계로 이동">
       <div class="video-upload">
